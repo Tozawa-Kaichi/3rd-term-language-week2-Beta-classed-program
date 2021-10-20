@@ -7,6 +7,7 @@
 /// </summary>
 public class WallController : MonoBehaviour
 {
+    [SerializeField] float m_lifetime;
     /// <summary>左に動く速さ</summary>
     [SerializeField] float m_moveSpeed = 1f;
 
@@ -14,5 +15,6 @@ public class WallController : MonoBehaviour
     {
         // 一定速度で左に動かす
         this.transform.Translate(Vector2.left * m_moveSpeed * Time.deltaTime);
+        Destroy(this.gameObject, m_lifetime);
     }
 }
