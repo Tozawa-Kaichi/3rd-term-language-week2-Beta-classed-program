@@ -17,7 +17,7 @@ public class JumpController : MonoBehaviour
     /// <summary>経過時間を表示するオブジェクト</summary>
     GameObject m_timeText = null;
     /// <summary>ゲームオーバーかどうかを判断するフラグ</summary>
-    bool m_isGameover = false;
+    public bool m_isGameover = false;
 
     void Start()
     {
@@ -35,11 +35,15 @@ public class JumpController : MonoBehaviour
             m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
         }
 
-        // TimeText にプレイ時間を表示する
-        m_timeText.GetComponent<Text>().text = Time.time.ToString("F2");    // F2 で「小数点以下２桁まで」を指定して、実数を文字列に変換する
+        if (m_isGameover==false)
+        {
+            // TimeText にプレイ時間を表示する
+            m_timeText.GetComponent<Text>().text = Time.time.ToString("F2");    // F2 で「小数点以下２桁まで」を指定して、実数を文字列に変換する
+        }
     }
 
-    void OnCollisionEnter(Collision collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // 何かにぶつかったらゲームオーバーとする
         m_isGameover = true;
