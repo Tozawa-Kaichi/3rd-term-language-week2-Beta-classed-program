@@ -58,6 +58,8 @@ public class Crosshair : MonoBehaviour
         // パターン 4: 余計な要素（引数の型指定、引数の()、メソッドの return、メソッドの {}）を全て省略する
         closestBomb = _bombs.OrderBy(x => Vector2.Distance(_player.transform.position, x.transform.position)).FirstOrDefault();
 
+
+
         // 一番近い爆弾に照準を移動させる
         if (_target != closestBomb)
         {
